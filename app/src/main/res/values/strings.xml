@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Wolf Scatter</string>
+
+    <string name="facebook_app_id">792489451920183</string>
+    <string name="facebook_client_token">1c2fa97a0d8d46d425aceef096042954</string>
+
+    <string name="start_game">Press to start a game</string>
+    <string name="start_btn">Start</string>
+    <string name="victory">You Won!</string>
+    <string name="total">Score</string>
+    <string name="press">Press on Wolf</string>
+    <string name="score">0/5</string>
+    <string name="victory_btn">Play again?</string>
+
+</resources>
