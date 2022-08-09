@@ -15,7 +15,6 @@ import com.facebook.applinks.AppLinkData
 class WolfVM(app: Application) : AndroidViewModel(app) {
     private val urlBuilder = UriBuilder()
     private val oneSignal = TagSender()
-    lateinit var adId: String
 
     val urlLivedata: MutableLiveData<String> = MutableLiveData()
 
