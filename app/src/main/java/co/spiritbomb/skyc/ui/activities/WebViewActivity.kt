@@ -8,6 +8,8 @@ import android.os.Message
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.webkit.*
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -61,7 +63,7 @@ class WebViewActivity : AppCompatActivity() {
                 isUserGesture: Boolean,
                 resultMsg: Message?
             ): Boolean {
-                val newWebView = WebView(this@WebViewActivity.applicationContext)
+                val newWebView = WebView(applicationContext)
                 newWebView.webChromeClient = this
                 newWebView.settings.javaScriptEnabled = true
                 newWebView.settings.javaScriptCanOpenWindowsAutomatically = true
@@ -81,6 +83,16 @@ class WebViewActivity : AppCompatActivity() {
                 return true
             }
         }
+//        this@WebViewActivity.onBackPressedDispatcher.addCallback(this@WebViewActivity,
+//            object : OnBackPressedCallback(true) {
+//                override fun handleOnBackPressed() {
+//                    if (webView.canGoBack()) {
+//                        webView.goBack()
+//                    } else {
+//                        isEnabled = false
+//                    }
+//                }
+//            })
     }
 
     private inner class LocalClient : WebViewClient() {
@@ -158,20 +170,18 @@ class WebViewActivity : AppCompatActivity() {
 //        return webView.canGoBack()
 //    }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-            webView.goBack()
-            return true
-        }
-        return super.onKeyDown(keyCode, event)
-    }
-
-    override fun onBackPressed() {
-//        if (webView.canGoBack()) {
+//    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+//        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
 //            webView.goBack()
-//        } else {
-//            //
+//            return true
 //        }
+//        return super.onKeyDown(keyCode, event)
+//    }
+//
+    override fun onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack()
+        }
     }
 
     override fun onDestroy() {
