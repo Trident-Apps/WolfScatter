@@ -30,9 +30,9 @@ class LoadingActivity : AppCompatActivity() {
         val wolfVMFactory = WolfVMFactory(application)
         wolfVM = ViewModelProvider(this, wolfVMFactory)[WolfVM::class.java]
 
-//        if (checker.isDeviceSecured(this)) {
-//            startGame()
-//        } else {
+        if (!checker.isDeviceSecured(this)) {
+            startGame()
+        } else {
             lifecycleScope.launch(Dispatchers.IO) {
 
                 if (rep.checkDataStoreValue(DATASTORE_KEY, applicationContext) == null) {
@@ -47,7 +47,7 @@ class LoadingActivity : AppCompatActivity() {
                     startWeb(rep.checkDataStoreValue(DATASTORE_KEY, applicationContext).toString())
                 }
             }
-//        }
+        }
     }
 
     private fun startGame() {

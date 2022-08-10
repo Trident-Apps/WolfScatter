@@ -83,16 +83,6 @@ class WebViewActivity : AppCompatActivity() {
                 return true
             }
         }
-//        this@WebViewActivity.onBackPressedDispatcher.addCallback(this@WebViewActivity,
-//            object : OnBackPressedCallback(true) {
-//                override fun handleOnBackPressed() {
-//                    if (webView.canGoBack()) {
-//                        webView.goBack()
-//                    } else {
-//                        isEnabled = false
-//                    }
-//                }
-//            })
     }
 
     private inner class LocalClient : WebViewClient() {
@@ -153,31 +143,6 @@ class WebViewActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            android.R.id.home -> {
-//                if (checkIfPageCanGoBack()) {
-//                    webView.goBack()
-//                } else {
-//                    finish()
-//                }
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-
-//    private fun checkIfPageCanGoBack(): Boolean {
-//        return webView.canGoBack()
-//    }
-
-//    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-//        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-//            webView.goBack()
-//            return true
-//        }
-//        return super.onKeyDown(keyCode, event)
-//    }
-//
     override fun onBackPressed() {
         if (webView.canGoBack()) {
             webView.goBack()
